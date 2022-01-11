@@ -5,6 +5,8 @@ import com.adhessit.rems.repository.CPropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CPropertyService {
 
@@ -13,5 +15,13 @@ public class CPropertyService {
 
     public CProperty saveProperty(CProperty cProperty) {
         return cPropertyRepository.save(cProperty);
+    }
+
+    public List<CProperty> findAllProperties() {
+        return cPropertyRepository.findAll();
+    }
+
+    public void reset() {
+        cPropertyRepository.deleteAll();
     }
 }

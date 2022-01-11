@@ -5,35 +5,36 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "property")
+@Table
 @Data
 public class CProperty {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private Boolean isCentralHeating;
-    private Boolean isCleaningMachine;
-    private Boolean isClimatisation;
-    private Boolean isConcierge;
-    private Boolean isElevator;
-    private Boolean isFirePlace;
-    private Boolean isGarden;
-    private Boolean isInternet;
-    private Boolean isMicrowave;
-    private Boolean isModernKitchen;
-    private Boolean isMountainView;
-    private Boolean isOven;
-    private Boolean isRefrigerator;
-    private Boolean isSatelliteDish;
-    private Boolean isSeaView;
-    private Boolean isSecurity;
-    private Boolean isSwimmingPool;
-    private Boolean isTV;
-    private Boolean isTerrace;
+    private Boolean hasCentralHeating;
+    private Boolean hasCleaningMachine;
+    private Boolean hasCooling;
+    private Boolean hasConcierge;
+    private Boolean hasElevator;
+    private Boolean hasFirePlace;
+    private Boolean hasGarden;
+    private Boolean hasInternet;
+    private Boolean hasMicrowave;
+    private Boolean hasModernKitchen;
+    private Boolean hasMountainView;
+    private Boolean hasOven;
+    private Boolean hasRefrigerator;
+    private Boolean hasSatelliteDish;
+    private Boolean hasSeaView;
+    private Boolean hasSecurity;
+    private Boolean hasSwimmingPool;
+    private Boolean hasTV;
+    private Boolean hasTerrace;
 
     private double latitude;
     private double longitude;
@@ -49,44 +50,11 @@ public class CProperty {
     @Min(value = 0)
     private int age;
     private int area;
+    private Date availableDate;
 
     @ElementCollection
     private List<String> images;
 
-    @Override
-    public String toString() {
-        return "CProperty{" +
-                "id=" + id +
-                ", age=" + age +
-                ", area=" + area +
-                ", formType=" + formType +
-                ", isCentralHeating=" + isCentralHeating +
-                ", isCleaningMachine=" + isCleaningMachine +
-                ", isClimatisation=" + isClimatisation +
-                ", isConcierge=" + isConcierge +
-                ", isElevator=" + isElevator +
-                ", isFirePlace=" + isFirePlace +
-                ", isGarden=" + isGarden +
-                ", isInternet=" + isInternet +
-                ", isMicrowave=" + isMicrowave +
-                ", isModernKitchen=" + isModernKitchen +
-                ", isMountainView=" + isMountainView +
-                ", isOven=" + isOven +
-                ", isRefrigerator=" + isRefrigerator +
-                ", isSatelliteDish=" + isSatelliteDish +
-                ", isSeaView=" + isSeaView +
-                ", isSecurity=" + isSecurity +
-                ", isSwimmingPool=" + isSwimmingPool +
-                ", isTV=" + isTV +
-                ", isTerrace=" + isTerrace +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", nbBathrooms=" + nbBathrooms +
-                ", nbBedrooms=" + nbBedrooms +
-                ", nbFloors=" + nbFloors +
-                ", price=" + price +
-                ", propertyType=" + propertyType +
-                ", images=" + images +
-                '}';
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 }
