@@ -77,9 +77,9 @@ public class AuthController {
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
+        user.setPhoneNumber(signUpRequest.getPhoneNumber());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        System.out.println(user.toString());
         User result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder

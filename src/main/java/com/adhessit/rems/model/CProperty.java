@@ -57,4 +57,7 @@ public class CProperty {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
+
+    @ManyToOne
+    private User user;
 }
