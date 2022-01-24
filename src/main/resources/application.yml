@@ -1,11 +1,17 @@
 spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   security:
     oauth2:
